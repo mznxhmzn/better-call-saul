@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Better Call Saul 影视角色致敬网站——索尔·古德曼律师事务所复古电视广告体验。">
+  <meta name="theme-color" content="#171914">
+  <title>Better Call Saul!｜索尔·古德曼律师事务所</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="主导航">
+      <a class="brand" href="#home" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">SG</span>
+        <span><strong>SAUL GOODMAN</strong><small>ATTORNEY AT LAW</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="sr-only">展开导航</span>
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">首页</a>
+        <a href="#about">人物介绍</a>
+        <a href="#services">律所业务</a>
+        <a href="#reviews">客户评价</a>
+        <a class="nav-call" href="#contact">立即联系</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span>ALBUQUERQUE'S</span> MOST COLORFUL COUNSEL</p>
+        <h1 id="hero-title"><span class="better">BETTER CALL</span><span class="saul">SAUL!</span></h1>
+        <p class="hero-kicker">INJURED? IN AN ACCIDENT?<br><strong>别发愁——打给索尔！</strong></p>
+        <div class="hero-actions">
+          <a class="call-button pulse" href="tel:+15058425662" aria-label="拨打索尔的电话 505-842-5662">
+            <span class="call-icon" aria-hidden="true">☎</span>
+            <span><small>FREE CONSULTATION</small>505-842-5662</span>
+          </a>
+          <a class="case-link" href="#services">查看业务范围 <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="trust-tape" aria-label="服务特点">
+          <li>全天候接听*</li><li>现金优先</li><li>麻烦克星</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="索尔·古德曼复古广告形象">
+        <div class="sunburst" aria-hidden="true"></div>
+        <p class="stamp">ADVERTISEMENT!</p>
+        <img src="assets/saul-goodman-hero.png" alt="身穿黄色西装、指向镜头的索尔·古德曼插画" width="1024" height="1536">
+        <div class="price-badge" aria-hidden="true"><small>咨询费</small><strong>$0</strong><span>先聊再说</span></div>
+      </div>
+      <a class="scroll-cue" href="#about"><span>向下滚动</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <aside class="breaking-strip" aria-label="广告提示">
+      <div class="marquee-track">
+        <span>⚡ KNOW YOUR RIGHTS!</span><span>◆ EVERY PROBLEM HAS A LOOPHOLE</span><span>☎ 505-842-5662</span><span>⚡ KNOW YOUR RIGHTS!</span><span>◆ EVERY PROBLEM HAS A LOOPHOLE</span><span>☎ 505-842-5662</span>
+      </div>
+    </aside>
+
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="section-heading reveal">
+        <p class="section-number">01 / THE MAN</p>
+        <h2 id="about-title">两个名字，<em>一套生存法则。</em></h2>
+        <p>从吉米·麦吉尔到索尔·古德曼——这不是简单的改名，而是一场关于野心、底线和自我重塑的电视传奇。</p>
+      </div>
+
+      <div class="identity-switcher reveal" data-identity="jimmy">
+        <div class="identity-tabs" role="tablist" aria-label="选择人物身份">
+          <button id="tab-jimmy" role="tab" aria-selected="true" aria-controls="panel-jimmy" data-target="jimmy"><span>JIMMY</span> 吉米·麦吉尔</button>
+          <button id="tab-saul" role="tab" aria-selected="false" aria-controls="panel-saul" data-target="saul"><span>SAUL</span> 索尔·古德曼</button>
+        </div>
+        <div class="identity-body">
+          <div class="identity-portrait" aria-hidden="true">
+            <span class="file-label">CASE FILE<br>ABQ-2004</span>
+            <div class="face-card"><span>J</span><strong>McGILL</strong></div>
+            <div class="face-card saul-card"><span>S</span><strong>GOODMAN</strong></div>
+          </div>
+          <div class="identity-copy">
+            <article id="panel-jimmy" role="tabpanel" aria-labelledby="tab-jimmy">
+              <p class="identity-role">PUBLIC DEFENDER · ELDER LAW · DREAMER</p>
+              <h3>先做个“正经律师”</h3>
+              <p>从收发室一路读完法学院，他比任何人都懂小人物需要什么：有人肯听，有人肯拼，还有一条看起来不起眼的生路。</p>
+              <div class="trait-list"><span>韧性 MAX</span><span>同理心 87%</span><span>规矩 ？</span></div>
+            </article>
+            <article id="panel-saul" role="tabpanel" aria-labelledby="tab-saul" hidden>
+              <p class="identity-role">CRIMINAL LAW · SHOWMAN · PROBLEM SOLVER</p>
+              <h3>然后，生意就上门了</h3>
+              <p>鲜艳西装、洗脑广告、永不占线的电话。索尔不出售庄严，他出售“办法”——尤其当传统办法已经把门关上时。</p>
+              <div class="trait-list"><span>口才 MAX</span><span>人脉 99%</span><span>边界 ？</span></div>
+            </article>
+            <blockquote>“S’all good, man.”<cite>—— 一个名字的诞生</cite></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <div class="section-heading light reveal">
+        <p class="section-number">02 / LEGAL SERVICES</p>
+        <h2 id="services-title">麻烦找上门？<br><em>索尔先接电话。</em></h2>
+        <p>流程可能复杂，账单可能吓人，但你的律师广告一定要够响亮。</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <span class="service-index">01</span><div class="service-icon" aria-hidden="true">✹</div>
+          <h3>车祸与人身伤害</h3><p>保险公司只想让你签字？先把笔放下。我们负责把“倒霉一天”讲成一份完整案卷。</p>
+          <span class="tag">ACCIDENTS</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-index">02</span><div class="service-icon" aria-hidden="true">⚒</div>
+          <h3>工伤赔偿纠纷</h3><p>受伤不是工作福利。把病历、工资单和你老板的经典借口一起带来。</p>
+          <span class="tag">WORKPLACE</span>
+        </article>
+        <article class="service-card feature reveal">
+          <span class="popular">索尔推荐</span><span class="service-index">03</span><div class="service-icon" aria-hidden="true">$</div>
+          <h3>民事债务纠纷</h3><p>钱借出去了，人失联了？或者催款电话比亲妈还勤？让专业话术对付专业麻烦。</p>
+          <span class="tag">DEBT & CIVIL</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-index">04</span><div class="service-icon" aria-hidden="true">⚖</div>
+          <h3>轻罪与疑难案件</h3><p>故事听起来离谱？很好，我们见过更离谱的。保持沉默，然后记住这个号码。</p>
+          <span class="tag">DEFENSE</span>
+        </article>
+      </div>
+
+      <div class="fine-print reveal"><strong>小字也很重要：</strong> 本页面业务描述均为影视主题创作，不提供、替代或暗示任何真实法律服务。</div>
+    </section>
+
+    <section class="reviews section" id="reviews" aria-labelledby="reviews-title">
+      <div class="reviews-top reveal">
+        <div>
+          <p class="section-number">03 / WORD ON THE STREET</p>
+          <h2 id="reviews-title">阿尔伯克基都在谈论他</h2>
+        </div>
+        <div class="rating"><span>★★★★★</span><strong>4.9-ish</strong><small>完全虚构的高分</small></div>
+      </div>
+      <p class="fiction-label">剧情彩蛋区 · 以下均为虚构客户留言</p>
+
+      <div class="review-grid">
+        <article class="review-card tilt-left reveal">
+          <div class="review-meta"><span class="avatar">P</span><div><strong>普莱斯 P.</strong><small>制药行业“爱好者”</small></div></div>
+          <p>“他没有问我的悍马为什么是黄色，也没有评价我的鞋。真正的专业人士。”</p>
+          <span class="verified">✓ 身份大概核验过</span>
+        </article>
+        <article class="review-card center-card reveal">
+          <div class="review-meta"><span class="avatar">K</span><div><strong>卡特曼夫妇</strong><small>前社区模范家庭</small></div></div>
+          <p>“办公室不大，但办法很多。建议谈判前先确认他有没有录音。”</p>
+          <span class="verified">✓ 留言地点未知</span>
+        </article>
+        <article class="review-card tilt-right reveal">
+          <div class="review-meta"><span class="avatar">L</span><div><strong>激光游戏城员工</strong><small>匿名商业顾问</small></div></div>
+          <p>“他说这地方是投资机会。虽然没人来玩，但停车位真的很宽。”</p>
+          <span class="verified">✓ 商业计划待定</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-burst" aria-hidden="true"></div>
+      <div class="contact-inner reveal">
+        <p class="contact-overline">ONE CALL CAN CHANGE EVERYTHING</p>
+        <h2 id="contact-title">还在等什么？<br><span>BETTER CALL SAUL!</span></h2>
+        <a class="mega-phone pulse" href="tel:+15058425662"><small>CALL NOW · 别让麻烦先打来</small><strong>505-842-5662</strong></a>
+        <div class="contact-details">
+          <p><strong>OFFICE</strong><span>9800 Montgomery Blvd NE<br>Albuquerque, New Mexico</span></p>
+          <p><strong>HOURS</strong><span>MON–SUN / 24-ish<br>Appointments? Optional.</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark">SG</span><p><strong>SAUL GOODMAN</strong><small>ATTORNEY AT LAW</small></p></div>
+    <p class="disclaimer">本网站为《Better Call Saul》影视角色非官方粉丝致敬项目。所有人物、业务、评价与联系方式均为虚构影视设定，仅供课程展示与娱乐，不构成真实法律建议或律师委托关系。</p>
+    <div class="footer-bottom"><span>© <span id="year"></span> Better Call Saul Fan Tribute</span><a href="#top">回到顶部 ↑</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
