@@ -243,3 +243,30 @@ footer { padding: 42px max(5vw, 28px) 25px; color: #c6c7b8; background: #10110e;
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+.ad-video { color: var(--cream); background: #27271f; border-bottom: 5px solid var(--ink); }
+.ad-video-layout { max-width: 1180px; margin: auto; display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(30px, 5vw, 70px); align-items: center; }
+.ad-video .section-number { color: var(--yellow); }
+.ad-video-copy h2 { margin: 18px 0 22px; font: 900 clamp(3rem, 5vw, 5rem)/.96 Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+.ad-video-copy h2 em { color: var(--yellow); font-style: normal; }
+.ad-video-copy > p:not(.section-number) { max-width: 440px; margin: 0 0 30px; color: #d8d4bb; font-size: 16px; line-height: 1.75; }
+.video-link { display: inline-block; padding: 13px 18px; color: var(--ink); background: var(--yellow); border: 3px solid var(--cream); box-shadow: 5px 5px 0 var(--red); font-weight: 900; transition: transform .2s ease; }
+.video-link:hover { transform: translateY(-4px); }
+.video-link span { margin-left: 8px; }
+.video-shell { min-width: 0; padding: 8px; background: var(--ink); border: 4px solid var(--cream); box-shadow: 12px 12px 0 var(--red); transform: rotate(.35deg); }
+.video-topline { min-height: 35px; display: flex; align-items: center; gap: 8px; padding: 0 9px; color: var(--yellow); font: 900 11px/1 monospace; letter-spacing: .1em; }
+.video-topline > span:last-child { margin-left: auto; color: var(--cream); font-size: 9px; }
+.on-air-dot { width: 9px; height: 9px; flex: none; border-radius: 50%; background: var(--red); box-shadow: 0 0 9px var(--red); animation: pulse 2.2s ease-in-out infinite; }
+.video-frame { width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-caption { margin: 10px 7px 4px; color: #c4c1b3; font-size: 10px; line-height: 1.5; }
+
+@media (max-width: 1000px) {
+  .ad-video-layout { grid-template-columns: 1fr; }
+  .ad-video-copy h2 { max-width: 650px; }
+}
+
+@media (max-width: 760px) {
+  .video-shell { box-shadow: 7px 7px 0 var(--red); }
+  .video-topline > span:last-child { display: none; }
+}
