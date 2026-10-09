@@ -302,10 +302,23 @@
     <section class="guestbook section" id="guestbook" aria-labelledby="guestbook-title">
       <div class="guestbook-heading reveal">
         <div><p class="section-number">BONUS / THE COMPLAINT DEPARTMENT</p><h2 id="guestbook-title">“客户”留言板<em>好评照登，差评……也登。</em></h2></div>
-        <span class="guestbook-stamp" aria-hidden="true">100%<br>虚构留言</span>
+        <span class="guestbook-stamp" aria-hidden="true">FAN MAIL<br>粉丝留言</span>
       </div>
-      <p class="guestbook-notice">粉丝原创玩梗 · 以下留言模仿剧中角色语气，均为虚构创作，不是原剧台词，也不是真实客户评价。含角色关系与剧情梗。</p>
-      <div class="guestbook-filters" role="group" aria-label="筛选虚构留言">
+      <p class="guestbook-notice">粉丝原创玩梗 · 下方六条角色便签模仿剧中人物语气，均为虚构创作，不是原剧台词，也不是真实客户评价。你添加的本机留言会单独展示。</p>
+      <form class="local-comment-form" id="local-comment-form" aria-labelledby="local-comment-title" aria-describedby="local-comment-privacy">
+        <div class="local-form-heading"><h3 id="local-comment-title">给索尔留张便签</h3><span>仅本机保存</span></div>
+        <p id="local-comment-privacy">留言仅保存在当前浏览器，不上传服务器，其他访客看不到。清除浏览器数据、换设备或退出无痕模式后可能丢失。请勿填写真实案件或个人敏感信息。</p>
+        <div class="local-form-fields">
+          <label for="comment-name">昵称<input id="comment-name" name="nickname" type="text" required maxlength="20" placeholder="例如：阿尔伯克基热心市民" autocomplete="off"></label>
+          <label for="comment-rating">评价<select id="comment-rating" name="rating"><option value="good">好评 ★★★★★</option><option value="bad">差评 ★☆☆☆☆</option></select></label>
+          <label class="local-message-field" for="comment-message">留言内容<textarea id="comment-message" name="message" required maxlength="300" rows="4" placeholder="来点粉丝玩梗，或者说说你的观剧感受。" aria-describedby="comment-length"></textarea></label>
+        </div>
+        <div class="local-form-actions"><span id="comment-length">0 / 300 字符</span><button id="comment-submit" type="submit" disabled>贴上便签 <span aria-hidden="true">↗</span></button></div>
+        <noscript><p class="comment-status">请启用 JavaScript 使用本机留言功能。此表单不会上传留言。</p></noscript>
+        <p id="comment-status" class="comment-status" role="status" aria-live="polite"></p>
+        <button class="comment-undo" id="comment-undo" type="button" hidden>撤销刚才的删除</button>
+      </form>
+      <div class="guestbook-filters" role="group" aria-label="筛选角色留言和本机访客留言">
         <button type="button" data-review-filter="all" aria-pressed="true">全部留言 / 06</button>
         <button type="button" data-review-filter="good" aria-pressed="false">好评 / 03</button>
         <button type="button" data-review-filter="bad" aria-pressed="false">差评 / 03</button>
@@ -349,7 +362,12 @@
           <footer><strong>迈克·厄曼特劳特<small>MIKE EHRMANTRAUT</small></strong><span>便签 06 / 不按字数收取费用</span></footer>
         </article>
       </div>
-      <p class="guestbook-fineprint">* 本板不接受真实委托、不收集访客留言，也没有“删差评”按钮。与 AMC / Sony 无关。</p>
+      <div class="local-comments" aria-labelledby="local-comments-title">
+        <h3 id="local-comments-title">你的本机留言 <span>非剧中角色 · 其他访客不可见</span></h3>
+        <p id="local-comment-empty">还没有便签。写下第一条留言吧。</p>
+        <div class="guestbook-grid" id="local-comment-list"></div>
+      </div>
+      <p class="guestbook-fineprint">* 角色留言为粉丝原创玩梗；访客留言仅存于当前浏览器，不构成真实客户评价，不接受真实法律委托。与 AMC / Sony 无关。</p>
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">

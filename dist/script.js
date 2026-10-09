@@ -154,16 +154,156 @@ saulAudio?.addEventListener('pause', () => updateAudioStatus(saulAudio.ended ? '
 saulAudio?.addEventListener('ended', () => updateAudioStatus('播放结束'));
 saulAudio?.addEventListener('waiting', () => updateAudioStatus('正在缓冲…'));
 saulAudio?.addEventListener('error', () => updateAudioStatus('加载失败，请打开音频链接'));
-const guestbookNotes = document.querySelectorAll('[data-review]');
+const commentForm = document.getElementById('local-comment-form');
+const commentName = document.getElementById('comment-name');
+const commentRating = document.getElementById('comment-rating');
+const commentMessage = document.getElementById('comment-message');
+const commentStatus = document.getElementById('comment-status');
+const commentList = document.getElementById('local-comment-list');
+const commentUndo = document.getElementById('comment-undo');
+const COMMENT_KEY = 'bcs.localGuestbook.v1';
+const COMMENT_LIMIT = 100;
+let storageAvailable = true;
+let reviewFilter = 'all';
+let deletedComment = null;
+
+function readComments() {
+  try {
+    const stored = window.localStorage.getItem(COMMENT_KEY);
+    if (!stored) return [];
+    const data = JSON.parse(stored);
+    if (data.version !== 1 || !Array.isArray(data.comments)) throw new Error('Invalid data');
+    return data.comments.filter((item) => item && typeof item.id === 'string' && item.id.length <= 100 &&
+      typeof item.name === 'string' && item.name.trim().length > 0 && item.name.length <= 20 &&
+      typeof item.message === 'string' && item.message.trim().length > 0 && item.message.length <= 300 &&
+      ['good', 'bad'].includes(item.rating) && typeof item.createdAt === 'string' &&
+      Number.isFinite(Date.parse(item.createdAt))).slice(0, COMMENT_LIMIT);
+  } catch {
+    storageAvailable = false;
+    commentStatus.textContent = '无法读取浏览器保存的数据。新留言仅在本次页面保留，刷新后会丢失。';
+    return [];
+  }
+}
+let localComments = readComments();
+
+function saveComments(next) {
+  localComments = next;
+  if (!storageAvailable) return false;
+  try {
+    window.localStorage.setItem(COMMENT_KEY, JSON.stringify({ version: 1, comments: next }));
+    return true;
+  } catch {
+    storageAvailable = false;
+    return false;
+  }
+}
+function commentElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+function filterGuestbook() {
+  const notes = [...document.querySelectorAll('#guestbook [data-review]')];
+  let fictional = 0, local = 0;
+  notes.forEach((note) => {
+    note.hidden = reviewFilter !== 'all' && note.dataset.review !== reviewFilter;
+    if (!note.hidden) note.dataset.localComment ? local++ : fictional++;
+  });
+  guestbookFilters.forEach((button) => {
+    const type = button.dataset.reviewFilter;
+    const count = notes.filter((note) => type === 'all' || note.dataset.review === type).length;
+    button.textContent = `${{ all: '全部留言', good: '好评', bad: '差评' }[type]} / ${count}`;
+    button.setAttribute('aria-pressed', String(type === reviewFilter));
+  });
+  document.getElementById('guestbook-count').textContent = `角色留言 ${fictional} 条 · 本机留言 ${local} 条`;
+  const empty = document.getElementById('local-comment-empty');
+  empty.hidden = local > 0;
+  empty.textContent = localComments.length ? '当前筛选下没有本机留言，试试“全部留言”。' : '还没有便签。写下第一条留言吧。';
+}
+function renderComments() {
+  commentList.replaceChildren();
+  localComments.forEach((item) => {
+    const card = commentElement('article', `guestbook-note guestbook-note--${item.rating} local-comment-note`);
+    card.dataset.review = item.rating;
+    card.dataset.localComment = item.id;
+    const top = commentElement('div', 'note-top');
+    top.append(commentElement('span', 'note-verdict', item.rating === 'good' ? '好评' : '差评'),
+      commentElement('span', 'local-comment-badge', '仅本机保存'));
+    const body = commentElement('p', 'note-body', item.message);
+    const footer = commentElement('footer');
+    footer.append(commentElement('strong', '', item.name));
+    const time = commentElement('time', 'local-comment-time', new Date(item.createdAt).toLocaleString('zh-CN'));
+    time.dateTime = item.createdAt;
+    footer.append(time, commentElement('span', '', '访客便签 · 非剧中角色或原台词'));
+    const remove = commentElement('button', 'comment-delete', '删除这条便签');
+    remove.type = 'button';
+    remove.setAttribute('aria-label', `删除 ${item.name} 的本机留言`);
+    remove.addEventListener('click', () => {
+      deletedComment = item;
+      const saved = saveComments(localComments.filter((entry) => entry.id !== item.id));
+      renderComments();
+      commentUndo.hidden = false;
+      commentStatus.textContent = saved ? '已删除这条本机留言，可以撤销。' : '已从本次页面移除，但无法同步浏览器存储。刷新后旧数据可能仍在。';
+      commentUndo.focus({ preventScroll: true });
+    });
+    footer.append(remove);
+    card.append(top, commentElement('h3', '', item.rating === 'good' ? '给索尔一个好评' : '给索尔一个差评'), body, footer);
+    commentList.append(card);
+  });
+  filterGuestbook();
+}
 guestbookFilters.forEach((button) => {
   button.addEventListener('click', () => {
-    const filter = button.dataset.reviewFilter;
-    guestbookFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-    let count = 0;
-    guestbookNotes.forEach((note) => {
-      note.hidden = filter !== 'all' && note.dataset.review !== filter;
-      if (!note.hidden) count++;
-    });
-    document.getElementById('guestbook-count').textContent = `显示 ${count} 条虚构留言`;
+    reviewFilter = button.dataset.reviewFilter;
+    filterGuestbook();
   });
 });
+function updateCommentLength() {
+  document.getElementById('comment-length').textContent = `${commentMessage.value.length} / 300 字符`;
+  commentMessage.setCustomValidity('');
+}
+commentMessage.addEventListener('input', updateCommentLength);
+commentName.addEventListener('input', () => commentName.setCustomValidity(''));
+commentForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = commentName.value.trim(), message = commentMessage.value.trim();
+  commentName.setCustomValidity(name.length > 0 && name.length <= 20 ? '' : '请填写 1–20 个字符的昵称。');
+  commentMessage.setCustomValidity(message.length > 0 && message.length <= 300 ? '' : '请填写 1–300 个字符的留言。');
+  if (!commentForm.reportValidity()) return;
+  if (localComments.length >= COMMENT_LIMIT) {
+    commentStatus.textContent = '本机最多保存 100 条留言，请先删除不需要的便签。';
+    return;
+  }
+  const rating = commentRating.value;
+  if (!['good', 'bad'].includes(rating)) return;
+  const item = { id: window.crypto?.randomUUID?.() || `local-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    name, message, rating, createdAt: new Date().toISOString() };
+  const saved = saveComments([item, ...localComments]);
+  reviewFilter = 'all';
+  deletedComment = null;
+  commentUndo.hidden = true;
+  renderComments();
+  commentForm.reset();
+  updateCommentLength();
+  commentStatus.textContent = saved ? '便签已保存到当前浏览器。刷新后仍在，其他访客不可见。' : '便签已显示，但浏览器无法保存。刷新或关闭页面后会丢失。';
+});
+commentUndo.addEventListener('click', () => {
+  if (!deletedComment || localComments.length >= COMMENT_LIMIT) return;
+  const saved = saveComments([deletedComment, ...localComments].sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)));
+  deletedComment = null;
+  commentUndo.hidden = true;
+  reviewFilter = 'all';
+  renderComments();
+  commentStatus.textContent = saved ? '已恢复刚才删除的留言。' : '已在本次页面恢复，但浏览器无法保存。';
+  commentMessage.focus({ preventScroll: true });
+});
+window.addEventListener('storage', (event) => {
+  if (event.key !== COMMENT_KEY && event.key !== null) return;
+  localComments = readComments();
+  deletedComment = null;
+  commentUndo.hidden = true;
+  renderComments();
+});
+renderComments();
+document.getElementById('comment-submit').disabled = false;

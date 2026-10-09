@@ -413,3 +413,33 @@ footer { padding: 42px max(5vw, 28px) 25px; color: #c6c7b8; background: #10110e;
 .soundtrack-credit { margin: 8px 0 0; color: #c4c1b3; font-size: 10px; line-height: 1.8; }
 .soundtrack-credit a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) { .soundtrack { grid-template-columns: 1fr; padding: 20px 16px; gap: 26px; } .cassette { max-width: 230px; width: 100%; margin: auto; } }
+
+.local-comment-form { max-width: 1180px; margin: 0 auto 34px; padding: 28px; background: var(--cream); border: 3px solid var(--ink); box-shadow: 6px 6px 0 #9c241d; }
+.local-form-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; }
+.local-form-heading h3 { margin: 0; font-size: 25px; font-weight: 900; }
+.local-form-heading > span, .local-comment-badge { padding: 5px 8px; background: var(--ink); color: var(--yellow); font: 700 11px/1.5 monospace; }
+#local-comment-privacy { margin: 16px 0 22px; color: #554d3e; font-size: 13px; line-height: 1.85; }
+.local-form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.local-form-fields label { display: grid; gap: 9px; font-size: 13px; font-weight: 900; }
+.local-message-field { grid-column: 1 / -1; }
+.local-form-fields input, .local-form-fields select, .local-form-fields textarea { min-width: 0; width: 100%; padding: 12px; color: var(--ink); background: #fffdf2; border: 2px solid var(--ink); border-radius: 0; font: 400 16px/1.7 "Microsoft YaHei", sans-serif; }
+.local-form-fields textarea { resize: vertical; min-height: 125px; }
+.local-form-fields input:focus-visible, .local-form-fields select:focus-visible, .local-form-fields textarea:focus-visible { outline: 4px solid #58b8d5; outline-offset: 3px; }
+.local-form-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 18px; }
+.local-form-actions > span { color: #554d3e; font: 700 12px/1.5 monospace; }
+.local-form-actions button { min-height: 46px; padding: 12px 22px; color: var(--cream); background: var(--ink); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--red); font-weight: 900; cursor: pointer; }
+.local-form-actions button:hover { color: var(--ink); background: var(--yellow); }
+.comment-status { margin: 18px 0 0; color: #174f4c; font-size: 13px; font-weight: 700; line-height: 1.8; }
+.comment-status:empty { display: none; }
+.comment-undo, .comment-delete { min-height: 44px; margin-top: 14px; padding: 9px 12px; color: #9c241d; background: transparent; border: 2px solid #9c241d; font: 700 12px/1.5 sans-serif; cursor: pointer; }
+.comment-undo[hidden] { display: none; }
+.comment-undo:hover, .comment-delete:hover { color: var(--cream); background: #9c241d; }
+.local-comments { max-width: 1180px; margin: 40px auto 0; padding-top: 28px; border-top: 3px dashed #6c624e; }
+.local-comments > h3 { margin: 0 0 28px; font-size: 24px; font-weight: 900; }
+.local-comments > h3 span { display: block; margin-top: 8px; color: #554d3e; font-size: 12px; font-weight: 400; }
+#local-comment-empty { padding: 20px; font-size: 14px; border: 2px dashed #8f8065; background: #eee2c8; }
+#local-comment-empty[hidden] { display: none; }
+.local-comment-note .note-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+.local-comment-note footer strong { overflow-wrap: anywhere; }
+.local-comment-time { display: block; margin-top: 9px; color: #554d3e; font-size: 11px; line-height: 1.6; }
+@media (max-width: 760px) { .local-comment-form { padding: 22px 16px; } .local-form-fields { grid-template-columns: 1fr; } .local-message-field { grid-column: auto; } }
