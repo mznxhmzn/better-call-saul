@@ -1,6 +1,16 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
+document.querySelector('[data-back-to-top]')?.addEventListener('click', (event) => {
+  // Leave modified clicks available for normal link behavior.
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  closeNavigation();
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, left: 0, behavior: reducedMotion ? 'instant' : 'smooth' });
+  document.querySelector('.brand')?.focus({ preventScroll: true });
+});
+
 function closeNavigation() {
   menuButton?.setAttribute('aria-expanded', 'false');
   navLinks?.classList.remove('open');
