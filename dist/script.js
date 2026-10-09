@@ -1,18 +1,36 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
+function closeNavigation() {
+  menuButton?.setAttribute('aria-expanded', 'false');
+  navLinks?.classList.remove('open');
+  const label = menuButton?.querySelector('.sr-only');
+  if (label) label.textContent = '展开导航';
+}
+
 menuButton?.addEventListener('click', () => {
   const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!isOpen));
   navLinks.classList.toggle('open', !isOpen);
+  menuButton.querySelector('.sr-only').textContent = isOpen ? '展开导航' : '关闭导航';
 });
 
 document.querySelectorAll('.nav-links a').forEach((link) => {
   link.addEventListener('click', () => {
-    menuButton?.setAttribute('aria-expanded', 'false');
-    navLinks.classList.remove('open');
+    closeNavigation();
   });
 });
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+    closeNavigation();
+    menuButton.focus();
+  }
+});
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.site-header')) closeNavigation();
+});
+window.matchMedia('(max-width: 1040px)').addEventListener('change', closeNavigation);
 
 const identityButtons = document.querySelectorAll('.identity-tabs [role="tab"]');
 const identitySwitcher = document.querySelector('.identity-switcher');
