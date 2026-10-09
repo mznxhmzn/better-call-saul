@@ -364,35 +364,39 @@ footer { padding: 42px max(5vw, 28px) 25px; color: #c6c7b8; background: #10110e;
 }
 @media (prefers-reduced-motion: reduce) { .identity-card { transition: none; } }
 
-.case-notice { max-width: 1180px; margin: -10px auto 34px; padding: 16px 20px; color: var(--cream); background: #123e3c; border: 2px dashed #abc4b2; font-size: 13px; line-height: 1.8; }
-.case-notice strong { display: block; margin-bottom: 5px; color: var(--yellow); font-size: 14px; }
-.service-grid.case-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
-.case-card { min-width: 0; padding: 30px 22px 24px; }
+.service-grid.case-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 26px; }
+.case-card { min-width: 0; min-height: 440px; padding: 38px 26px 26px; }
 .case-card.reveal.visible:hover { transform: translateY(-6px); }
-.case-card .service-icon { margin-bottom: 24px; }
-.case-card .service-index { font-size: 12px; }
-.case-card h3 { font-size: 25px; line-height: 1.3; }
-.case-card .service-pitch { min-height: 50px; margin-bottom: 22px; }
-.case-file { flex: 1; display: flex; flex-direction: column; padding: 20px 17px; color: var(--ink); background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
-.case-file .case-label { margin: 0 0 12px; color: #9c241d; font: 900 10px/1.6 monospace; letter-spacing: .08em; }
-.case-file h4 { margin: 0 0 16px; font-size: 22px; font-weight: 900; line-height: 1.4; }
-.case-file > p:not(.case-label) { margin: 0 0 20px; font-size: 14px; line-height: 1.85; }
-.case-file dl { margin: 0 0 20px; padding-block: 14px; border-block: 2px dashed #aaa18a; }
-.case-file dl > div + div { margin-top: 12px; }
-.case-file dt { margin-bottom: 4px; color: #174f4c; font-size: 11px; font-weight: 900; }
+.case-card .service-icon { width: 76px; height: 76px; font-size: 38px; margin-bottom: 30px; }
+.case-card .service-index { font-size: 11px; letter-spacing: .08em; }
+.case-card h3 { font-size: clamp(1.8rem, 2.4vw, 2.3rem); line-height: 1.3; margin-bottom: 20px; }
+.case-card .service-pitch { min-height: 86px; margin-bottom: 22px; font-size: 16px; line-height: 1.85; }
+.service-scope { min-height: 90px; display: flex; flex-wrap: wrap; align-content: start; gap: 9px; padding: 0; margin: 0 0 24px; list-style: none; }
+.service-scope li { padding: 7px 10px; border: 1px solid currentColor; font-size: 12px; font-weight: 700; line-height: 1.4; }
+.case-card .tag { margin-top: auto; padding-block: 14px; font-size: 10px; letter-spacing: .08em; line-height: 1.6; overflow-wrap: anywhere; }
+.case-reference { margin-top: 6px; border-top: 1px solid currentColor; }
+.case-reference > summary { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 54px; padding: 13px 0; cursor: pointer; list-style: none; font-size: 12px; line-height: 1.6; }
+.case-reference > summary::-webkit-details-marker { display: none; }
+.case-reference > summary::after { content: "+"; margin-left: auto; font-size: 22px; line-height: 1; }
+.case-reference[open] > summary::after { content: "−"; }
+.case-reference > summary:focus-visible { outline: 4px solid #58b8d5; outline-offset: 4px; }
+.case-reference-label { border: 1px solid currentColor; padding: 2px 5px; font-size: 9px; }
+.case-reference-name { font-weight: 700; }
+.case-reference-hint { width: 100%; font-size: 10px; opacity: .85; }
+.case-file { padding: 18px 15px; color: var(--ink); background: var(--cream); border: 1px solid #bcb396; }
+.case-file .case-label { margin: 0 0 12px; color: #695b44; font: 700 10px/1.6 monospace; }
+.case-file h4 { margin: 0 0 12px; font-size: 17px; font-weight: 900; line-height: 1.5; }
+.case-file > p:not(.case-label) { margin: 0 0 16px; font-size: 13px; line-height: 1.85; }
+.case-file dl { margin: 0 0 16px; padding-block: 12px; border-block: 1px dashed #aaa18a; }
+.case-file dl > div + div { margin-top: 10px; }
+.case-file dt { margin-bottom: 4px; color: #174f4c; font-size: 10px; font-weight: 900; }
 .case-file dd { margin: 0; font-size: 12px; line-height: 1.75; overflow-wrap: anywhere; }
-.case-details { margin-bottom: 20px; }
-.case-details summary { min-height: 44px; padding: 12px; border: 2px solid var(--ink); cursor: pointer; font-size: 13px; font-weight: 900; background: #e5ddbf; }
-.case-details summary span { margin-left: 10px; color: #733b27; font-size: 10px; font-weight: 400; }
-.case-details summary:hover { background: var(--yellow); }
-.case-details summary:focus-visible { outline: 4px solid #58b8d5; outline-offset: 3px; }
-.case-details p { margin: 16px 0 0; font-size: 13px; line-height: 1.85; }
-.case-details .case-ethics { padding: 12px; background: #f0dfbf; border-left: 3px solid #9c241d; }
-.case-source { margin-top: auto; width: fit-content; padding-block: 5px; color: #174f4c; font-size: 12px; font-weight: 900; text-decoration: underline; text-underline-offset: 4px; }
+.case-context p { margin: 12px 0 0; font-size: 12px; line-height: 1.85; }
+.case-context .case-ethics { padding: 10px; background: #f0dfbf; border-left: 3px solid #9c241d; }
+.case-source { display: inline-block; margin-top: 16px; padding-block: 5px; color: #174f4c; font-size: 11px; font-weight: 900; text-decoration: underline; text-underline-offset: 4px; }
 .case-source:hover { color: #9c241d; }
-.case-card .tag { margin-top: 24px; font-size: 9px; letter-spacing: .08em; line-height: 1.6; overflow-wrap: anywhere; }
-@media (max-width: 1000px) { .service-grid.case-grid { grid-template-columns: 1fr; } .case-card .service-pitch { min-height: 0; } }
-@media (max-width: 760px) { .case-notice { margin-top: 0; } .case-card { padding: 28px 18px 20px; } }
+@media (max-width: 1000px) { .service-grid.case-grid { grid-template-columns: 1fr; } .case-card .service-pitch, .service-scope { min-height: 0; } .case-card { min-height: 0; } }
+@media (max-width: 760px) { .case-card { padding: 30px 22px 22px; } }
 
 .soundtrack { max-width: 1180px; margin: 56px auto 0; padding: 26px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 30px; align-items: center; border: 3px solid var(--cream); box-shadow: 7px 7px 0 var(--red); background: #171c16; scroll-margin-top: 90px; }
 .cassette { padding: 20px 16px; color: var(--ink); background: var(--yellow); border: 4px solid #070a06; border-radius: 12px; transform: rotate(-3deg); text-align: center; }
