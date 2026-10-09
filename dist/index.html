@@ -96,13 +96,16 @@
       <div class="identity-switcher reveal" data-identity="jimmy">
         <div class="identity-tabs" role="tablist" aria-label="选择人物身份">
           <button id="tab-jimmy" role="tab" aria-selected="true" aria-controls="panel-jimmy" data-target="jimmy"><span>JIMMY</span> 吉米·麦吉尔</button>
-          <button id="tab-saul" role="tab" aria-selected="false" aria-controls="panel-saul" data-target="saul"><span>SAUL</span> 索尔·古德曼</button>
+          <button id="tab-saul" role="tab" aria-selected="false" aria-controls="panel-saul" data-target="saul" tabindex="-1"><span>SAUL</span> 索尔·古德曼</button>
         </div>
         <div class="identity-body">
           <div class="identity-portrait" aria-hidden="true">
             <span class="file-label">CASE FILE<br>ABQ-2004</span>
-            <div class="face-card"><span>J</span><strong>McGILL</strong></div>
-            <div class="face-card saul-card"><span>S</span><strong>GOODMAN</strong></div>
+            <div class="identity-card">
+              <div class="face-card jimmy-card"><small>PUBLIC DEFENDER</small><span>J</span><strong>JIMMY McGILL</strong></div>
+              <div class="face-card saul-card"><small>ATTORNEY AT LAW</small><span>S</span><strong>SAUL GOODMAN</strong></div>
+            </div>
+            <span class="flip-hint">ONE MAN. TWO SIDES. / 点击身份，翻面查看</span>
           </div>
           <div class="identity-copy">
             <article id="panel-jimmy" role="tabpanel" aria-labelledby="tab-jimmy">
@@ -255,6 +258,59 @@
       <p class="quote-empty" hidden>这个组合暂无台词。试试其他角色或季数，或点击“重置筛选”。</p>
       <p class="copy-status sr-only" role="status" aria-live="polite"></p>
       <p class="character-disclaimer">剧照与角色肖像仅作氛围配图，不代表对应台词发生的场景。版权归 AMC / Sony Pictures Television 及相关权利方；仅供粉丝趣味展示，与 AMC / Sony 无关。</p>
+    </section>
+
+    <section class="guestbook section" id="guestbook" aria-labelledby="guestbook-title">
+      <div class="guestbook-heading reveal">
+        <div><p class="section-number">BONUS / THE COMPLAINT DEPARTMENT</p><h2 id="guestbook-title">“客户”留言板<em>好评照登，差评……也登。</em></h2></div>
+        <span class="guestbook-stamp" aria-hidden="true">100%<br>虚构留言</span>
+      </div>
+      <p class="guestbook-notice">粉丝原创玩梗 · 以下留言模仿剧中角色语气，均为虚构创作，不是原剧台词，也不是真实客户评价。含角色关系与剧情梗。</p>
+      <div class="guestbook-filters" role="group" aria-label="筛选虚构留言">
+        <button type="button" data-review-filter="all" aria-pressed="true">全部留言 / 06</button>
+        <button type="button" data-review-filter="good" aria-pressed="false">好评 / 03</button>
+        <button type="button" data-review-filter="bad" aria-pressed="false">差评 / 03</button>
+        <span id="guestbook-count" role="status">显示 6 条虚构留言</span>
+      </div>
+      <div class="guestbook-grid">
+        <article class="guestbook-note guestbook-note--good reveal" data-review="good">
+          <div class="note-top"><span class="note-verdict">好评</span><span class="note-stars" aria-label="五星好评">★★★★★</span></div>
+          <h3>好评，但别替我做决定</h3>
+          <p class="note-body">文件整理得不错，跑腿也很积极。下次想替我解决职业危机之前，先问我一声。律师费可以谈，替我做主不可以。</p>
+          <footer><strong>金·韦克斯勒<small>KIM WEXLER</small></strong><span>便签 01 / 独立执业派</span></footer>
+        </article>
+        <article class="guestbook-note guestbook-note--bad reveal" data-review="bad">
+          <div class="note-top"><span class="note-verdict">差评</span><span class="note-stars" aria-label="一星差评">★☆☆☆☆</span></div>
+          <h3>差评：请先把手机关掉</h3>
+          <p class="note-body">我来评价的是职业规范，不是你的广告创意。彩色西装不能替代法律训练。另外，这块电子留言板为什么还通着电？</p>
+          <footer><strong>查克·麦吉尔<small>CHUCK McGILL</small></strong><span>便签 02 / 哥哥的严格审核</span></footer>
+        </article>
+        <article class="guestbook-note guestbook-note--good reveal" data-review="good">
+          <div class="note-top"><span class="note-verdict">好评</span><span class="note-stars" aria-label="五星好评">★★★★★</span></div>
+          <h3>好评，故事可以再讲一遍</h3>
+          <p class="note-body">律师很健谈，沙漠旅行的细节也相当丰富。我尤其欣赏他讲故事时的认真态度。下次见面，我们再从头聊聊。</p>
+          <footer><strong>拉罗·萨拉曼卡<small>LALO SALAMANCA</small></strong><span>便签 03 / 笑容满分，压力也满分</span></footer>
+        </article>
+        <article class="guestbook-note guestbook-note--bad reveal" data-review="bad">
+          <div class="note-top"><span class="note-verdict">差评</span><span class="note-stars" aria-label="一星差评">★☆☆☆☆</span></div>
+          <h3>差评：我的招牌不是广告位</h3>
+          <p class="note-body">业务能力值得讨论，但把我的职业生涯当双人娱乐项目就不必了。若你们有空，建议把创意用在自己的客户身上。</p>
+          <footer><strong>霍华德·哈姆林<small>HOWARD HAMLIN</small></strong><span>便签 04 / HHM 公关部不予转发</span></footer>
+        </article>
+        <article class="guestbook-note guestbook-note--good reveal" data-review="good">
+          <div class="note-top"><span class="note-verdict">好评</span><span class="note-stars" aria-label="五星好评">★★★★★</span></div>
+          <h3>好评，联系人储备充足</h3>
+          <p class="note-body">服务效率尚可，认识的人很多。唯一的问题是，他偶尔以为自己可以决定什么时候结束合作。这个部分仍需改进。</p>
+          <footer><strong>沃尔特·怀特<small>WALTER WHITE</small></strong><span>便签 05 / 化学老师的控制变量</span></footer>
+        </article>
+        <article class="guestbook-note guestbook-note--bad reveal" data-review="bad">
+          <div class="note-top"><span class="note-verdict">差评</span><span class="note-stars" aria-label="两星差评">★★☆☆☆</span></div>
+          <h3>差评：话太多</h3>
+          <p class="note-body">事情能办。嘴能闭上就更好。</p>
+          <footer><strong>迈克·厄曼特劳特<small>MIKE EHRMANTRAUT</small></strong><span>便签 06 / 不按字数收取费用</span></footer>
+        </article>
+      </div>
+      <p class="guestbook-fineprint">* 本板不接受真实委托、不收集访客留言，也没有“删差评”按钮。与 AMC / Sony 无关。</p>
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">

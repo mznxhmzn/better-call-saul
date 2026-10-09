@@ -119,3 +119,18 @@ quoteCards.forEach((card) => {
 });
 // Keep old shared links useful without retaining the misleading section name.
 if (window.location.hash === '#reviews') window.location.replace('#quotes');
+
+const guestbookFilters = document.querySelectorAll('[data-review-filter]');
+const guestbookNotes = document.querySelectorAll('[data-review]');
+guestbookFilters.forEach((button) => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.reviewFilter;
+    guestbookFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+    let count = 0;
+    guestbookNotes.forEach((note) => {
+      note.hidden = filter !== 'all' && note.dataset.review !== filter;
+      if (!note.hidden) count++;
+    });
+    document.getElementById('guestbook-count').textContent = `显示 ${count} 条虚构留言`;
+  });
+});
