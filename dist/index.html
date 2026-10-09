@@ -310,7 +310,7 @@
         <p id="local-comment-privacy">留言仅保存在当前浏览器，不上传服务器，其他访客看不到。清除浏览器数据、换设备或退出无痕模式后可能丢失。请勿填写真实案件或个人敏感信息。</p>
         <div class="local-form-fields">
           <label for="comment-name">昵称<input id="comment-name" name="nickname" type="text" required maxlength="20" placeholder="例如：阿尔伯克基热心市民" autocomplete="off"></label>
-          <label for="comment-rating">评价<select id="comment-rating" name="rating"><option value="good">好评 ★★★★★</option><option value="bad">差评 ★☆☆☆☆</option></select></label>
+          <label for="comment-rating">评价<select id="comment-rating" name="rating"><option value="5">★★★★★ · 很满意</option><option value="4">★★★★☆ · 满意</option><option value="3">★★★☆☆ · 一般</option><option value="2">★★☆☆☆ · 不太满意</option><option value="1">★☆☆☆☆ · 很不满意</option></select></label>
           <label class="local-message-field" for="comment-message">留言内容<textarea id="comment-message" name="message" required maxlength="300" rows="4" placeholder="来点粉丝玩梗，或者说说你的观剧感受。" aria-describedby="comment-length"></textarea></label>
         </div>
         <div class="local-form-actions"><span id="comment-length">0 / 300 字符</span><button id="comment-submit" type="submit" disabled>贴上便签 <span aria-hidden="true">↗</span></button></div>
@@ -321,6 +321,7 @@
       <div class="guestbook-filters" role="group" aria-label="筛选角色留言和本机访客留言">
         <button type="button" data-review-filter="all" aria-pressed="true">全部留言 / 06</button>
         <button type="button" data-review-filter="good" aria-pressed="false">好评 / 03</button>
+        <button type="button" data-review-filter="neutral" aria-pressed="false">中评 / 00</button>
         <button type="button" data-review-filter="bad" aria-pressed="false">差评 / 03</button>
         <span id="guestbook-count" role="status">显示 6 条虚构留言</span>
       </div>

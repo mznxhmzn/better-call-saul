@@ -167,6 +167,14 @@ let storageAvailable = true;
 let reviewFilter = 'all';
 let deletedComment = null;
 
+const SCORE_LABELS = { 1: '很不满意', 2: '不太满意', 3: '一般', 4: '满意', 5: '很满意' };
+function ratingForScore(score) { return score >= 4 ? 'good' : score === 3 ? 'neutral' : 'bad'; }
+function normalizeComment(item) {
+  const fallback = item.rating === 'good' ? 5 : item.rating === 'neutral' ? 3 : 1;
+  const score = Number.isInteger(item.score) && item.score >= 1 && item.score <= 5 ? item.score : fallback;
+  return { ...item, score, rating: ratingForScore(score) };
+}
+
 function readComments() {
   try {
     const stored = window.localStorage.getItem(COMMENT_KEY);
@@ -176,8 +184,8 @@ function readComments() {
     return data.comments.filter((item) => item && typeof item.id === 'string' && item.id.length <= 100 &&
       typeof item.name === 'string' && item.name.trim().length > 0 && item.name.length <= 20 &&
       typeof item.message === 'string' && item.message.trim().length > 0 && item.message.length <= 300 &&
-      ['good', 'bad'].includes(item.rating) && typeof item.createdAt === 'string' &&
-      Number.isFinite(Date.parse(item.createdAt))).slice(0, COMMENT_LIMIT);
+      ['good', 'neutral', 'bad'].includes(item.rating) && typeof item.createdAt === 'string' &&
+      Number.isFinite(Date.parse(item.createdAt))).slice(0, COMMENT_LIMIT).map(normalizeComment);
   } catch {
     storageAvailable = false;
     commentStatus.textContent = '无法读取浏览器保存的数据。新留言仅在本次页面保留，刷新后会丢失。';
@@ -213,7 +221,7 @@ function filterGuestbook() {
   guestbookFilters.forEach((button) => {
     const type = button.dataset.reviewFilter;
     const count = notes.filter((note) => type === 'all' || note.dataset.review === type).length;
-    button.textContent = `${{ all: '全部留言', good: '好评', bad: '差评' }[type]} / ${count}`;
+    button.textContent = `${{ all: '全部留言', good: '好评', neutral: '中评', bad: '差评' }[type]} / ${count}`;
     button.setAttribute('aria-pressed', String(type === reviewFilter));
   });
   document.getElementById('guestbook-count').textContent = `角色留言 ${fictional} 条 · 本机留言 ${local} 条`;
@@ -228,8 +236,10 @@ function renderComments() {
     card.dataset.review = item.rating;
     card.dataset.localComment = item.id;
     const top = commentElement('div', 'note-top');
-    top.append(commentElement('span', 'note-verdict', item.rating === 'good' ? '好评' : '差评'),
+    top.append(commentElement('span', 'note-verdict', SCORE_LABELS[item.score]),
       commentElement('span', 'local-comment-badge', '仅本机保存'));
+    const stars = commentElement('span', 'note-stars local-comment-stars', '★'.repeat(item.score) + '☆'.repeat(5 - item.score));
+    stars.setAttribute('aria-label', `${item.score} 星，${SCORE_LABELS[item.score]}`);
     const body = commentElement('p', 'note-body', item.message);
     const footer = commentElement('footer');
     footer.append(commentElement('strong', '', item.name));
@@ -248,7 +258,7 @@ function renderComments() {
       commentUndo.focus({ preventScroll: true });
     });
     footer.append(remove);
-    card.append(top, commentElement('h3', '', item.rating === 'good' ? '给索尔一个好评' : '给索尔一个差评'), body, footer);
+    card.append(top, commentElement('h3', '', `给索尔的 ${item.score} 星评价`), stars, body, footer);
     commentList.append(card);
   });
   filterGuestbook();
@@ -275,10 +285,11 @@ commentForm.addEventListener('submit', (event) => {
     commentStatus.textContent = '本机最多保存 100 条留言，请先删除不需要的便签。';
     return;
   }
-  const rating = commentRating.value;
-  if (!['good', 'bad'].includes(rating)) return;
+  const score = Number(commentRating.value);
+  if (!Number.isInteger(score) || score < 1 || score > 5) return;
+  const rating = ratingForScore(score);
   const item = { id: window.crypto?.randomUUID?.() || `local-${Date.now()}-${Math.random().toString(36).slice(2)}`,
-    name, message, rating, createdAt: new Date().toISOString() };
+    name, message, rating, score, createdAt: new Date().toISOString() };
   const saved = saveComments([item, ...localComments]);
   reviewFilter = 'all';
   deletedComment = null;

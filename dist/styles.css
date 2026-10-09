@@ -443,3 +443,7 @@ footer { padding: 42px max(5vw, 28px) 25px; color: #c6c7b8; background: #10110e;
 .local-comment-note footer strong { overflow-wrap: anywhere; }
 .local-comment-time { display: block; margin-top: 9px; color: #554d3e; font-size: 11px; line-height: 1.6; }
 @media (max-width: 760px) { .local-comment-form { padding: 22px 16px; } .local-form-fields { grid-template-columns: 1fr; } .local-message-field { grid-column: auto; } }
+
+.guestbook-note--neutral { background: #e7eee1; }
+.guestbook-note--neutral .note-verdict { background: #56583b; }
+.local-comment-stars { display: block; margin: -8px 0 18px; }
