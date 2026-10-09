@@ -139,6 +139,21 @@ quoteCards.forEach((card) => {
 if (window.location.hash === '#reviews') window.location.replace('#quotes');
 
 const guestbookFilters = document.querySelectorAll('[data-review-filter]');
+
+const soundtrack = document.querySelector('.soundtrack');
+const saulAudio = document.getElementById('saul-audio');
+const audioLoop = document.getElementById('audio-loop');
+const audioStatus = document.getElementById('audio-status');
+audioLoop?.addEventListener('change', () => { saulAudio.loop = audioLoop.checked; });
+function updateAudioStatus(message, playing = false) {
+  audioStatus.textContent = message;
+  soundtrack.classList.toggle('is-playing', playing);
+}
+saulAudio?.addEventListener('playing', () => updateAudioStatus('正在播放', true));
+saulAudio?.addEventListener('pause', () => updateAudioStatus(saulAudio.ended ? '播放结束' : '已暂停'));
+saulAudio?.addEventListener('ended', () => updateAudioStatus('播放结束'));
+saulAudio?.addEventListener('waiting', () => updateAudioStatus('正在缓冲…'));
+saulAudio?.addEventListener('error', () => updateAudioStatus('加载失败，请打开音频链接'));
 const guestbookNotes = document.querySelectorAll('[data-review]');
 guestbookFilters.forEach((button) => {
   button.addEventListener('click', () => {

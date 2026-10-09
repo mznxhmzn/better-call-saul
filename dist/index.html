@@ -86,6 +86,20 @@
           <p class="video-caption">视频由哔哩哔哩提供。若无法在当前浏览器播放，请使用左侧链接打开。</p>
         </div>
       </div>
+      <aside class="soundtrack reveal" id="soundtrack" aria-labelledby="soundtrack-title">
+        <div class="cassette" aria-hidden="true"><span>SIDE A / ABQ RADIO</span><div class="cassette-reels"><i></i><i></i></div><strong>BETTER CALL SAUL</strong></div>
+        <div class="soundtrack-copy">
+          <p class="section-number">PRESS PLAY / 声音彩蛋</p>
+          <h3 id="soundtrack-title">风骚律师片头曲 · 电话铃声</h3>
+          <p class="soundtrack-intro" id="soundtrack-description">听到这段旋律，就知道该打给谁。纯音频播放，点击播放后才会响起。</p>
+          <audio id="saul-audio" controls preload="none" aria-labelledby="soundtrack-title" aria-describedby="soundtrack-description">
+            <source src="assets/saul-theme-ringtone.mp3" type="audio/mpeg">
+            当前浏览器不支持音频播放，可<a href="assets/saul-theme-ringtone.mp3">打开 MP3 文件</a>。
+          </audio>
+          <div class="soundtrack-options"><label><input id="audio-loop" type="checkbox"> 循环播放</label><span id="audio-status" role="status" aria-live="polite">待播放</span></div>
+          <p class="soundtrack-credit">音频由项目作者提供，仅用于非官方粉丝展示；版权归相关权利方。<a href="assets/saul-theme-ringtone.mp3" target="_blank" rel="noopener">无法播放？打开音频 ↗</a></p>
+        </div>
+      </aside>
     </section>
 
     <section class="about section" id="about" aria-labelledby="about-title">

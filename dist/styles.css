@@ -393,3 +393,23 @@ footer { padding: 42px max(5vw, 28px) 25px; color: #c6c7b8; background: #10110e;
 .case-card .tag { margin-top: 24px; font-size: 9px; letter-spacing: .08em; line-height: 1.6; overflow-wrap: anywhere; }
 @media (max-width: 1000px) { .service-grid.case-grid { grid-template-columns: 1fr; } .case-card .service-pitch { min-height: 0; } }
 @media (max-width: 760px) { .case-notice { margin-top: 0; } .case-card { padding: 28px 18px 20px; } }
+
+.soundtrack { max-width: 1180px; margin: 56px auto 0; padding: 26px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 30px; align-items: center; border: 3px solid var(--cream); box-shadow: 7px 7px 0 var(--red); background: #171c16; scroll-margin-top: 90px; }
+.cassette { padding: 20px 16px; color: var(--ink); background: var(--yellow); border: 4px solid #070a06; border-radius: 12px; transform: rotate(-3deg); text-align: center; }
+.cassette > span { display: block; font: 900 10px/1.5 monospace; letter-spacing: .1em; }
+.cassette-reels { display: flex; justify-content: space-between; margin: 20px 0; padding: 12px; background: #292d25; border: 3px solid var(--ink); border-radius: 30px; }
+.cassette-reels i { display: block; width: 42px; height: 42px; border: 9px dashed var(--cream); border-radius: 50%; animation: spin 4s linear infinite; animation-play-state: paused; }
+.soundtrack.is-playing .cassette-reels i { animation-play-state: running; }
+.cassette strong { font: 900 16px/1.3 Impact, sans-serif; letter-spacing: .05em; }
+.soundtrack-copy { min-width: 0; }
+.soundtrack h3 { margin: 12px 0; color: var(--cream); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 900; line-height: 1.4; }
+.soundtrack-intro { margin: 0 0 18px; color: #d8d4bb; font-size: 13px; line-height: 1.8; }
+.soundtrack audio { display: block; width: 100%; height: 54px; border-radius: 6px; color-scheme: light; }
+.soundtrack audio:focus-visible, .soundtrack-options input:focus-visible { outline: 4px solid #58b8d5; outline-offset: 4px; }
+.soundtrack-options { margin-top: 14px; display: flex; gap: 20px; justify-content: space-between; align-items: center; font-size: 12px; }
+.soundtrack-options label { min-height: 44px; display: flex; gap: 9px; align-items: center; cursor: pointer; }
+.soundtrack-options input { width: 18px; height: 18px; accent-color: var(--yellow); }
+.soundtrack-options > span { color: var(--yellow); }
+.soundtrack-credit { margin: 8px 0 0; color: #c4c1b3; font-size: 10px; line-height: 1.8; }
+.soundtrack-credit a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) { .soundtrack { grid-template-columns: 1fr; padding: 20px 16px; gap: 26px; } .cassette { max-width: 230px; width: 100%; margin: auto; } }
