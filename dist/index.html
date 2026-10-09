@@ -27,7 +27,7 @@
         <a href="#home">首页</a>
         <a href="#about">人物介绍</a>
         <a href="#services">律所业务</a>
-        <a href="#reviews">剧中台词</a>
+        <a href="#quotes">剧中金句</a>
         <a class="nav-call" href="#contact">立即联系</a>
       </div>
     </nav>
@@ -156,18 +156,37 @@
       <div class="fine-print reveal"><strong>小字也很重要：</strong> 本页面业务描述均为影视主题创作，不提供、替代或暗示任何真实法律服务。</div>
     </section>
 
-    <section class="reviews section" id="reviews" aria-labelledby="reviews-title">
-      <div class="reviews-top reveal">
+    <section class="quotes section" id="quotes" aria-labelledby="quotes-title">
+      <div class="quotes-top reveal">
         <div>
-          <p class="section-number">03 / WORD ON THE STREET</p>
-          <h2 id="reviews-title">阿尔伯克基都在谈论他</h2>
+          <p class="section-number">03 / LINES FROM THE SHOW</p>
+          <h2 id="quotes-title">剧中金句<em>原声台词摘录</em></h2>
         </div>
-        <div class="rating"><span>ON RECORD</span><strong>05</strong><small>剧中人物 · 原声台词</small></div>
+        <div class="rating"><span>ON RECORD</span><strong>06</strong><small>角色档案 · 不是客户评价</small></div>
       </div>
-      <p class="fiction-label">剧情彩蛋区 · 英文原台词摘录，非真实客户评价</p>
-
-      <div class="review-grid character-grid">
-        <article class="review-card character-card character-card--chuck reveal">
+      <p class="fiction-label">粉丝彩蛋区 · 英文原声短句，非真实客户评价。展开背景含剧情剧透。</p>
+      <div class="quote-toolbar" aria-label="台词筛选">
+        <label for="quote-role">按角色<select id="quote-role"><option value="all">全部角色</option><option value="saul">索尔·古德曼</option><option value="chuck">查克·麦吉尔</option><option value="lalo">拉罗·萨拉曼卡</option><option value="kim">金·韦克斯勒</option><option value="howard">霍华德·哈姆林</option><option value="walter">沃尔特·怀特</option></select></label>
+        <label for="quote-season">按剧集／季数<select id="quote-season"><option value="all">全部季数</option><option value="bcs-1">风骚律师 · 第 1 季</option><option value="bcs-2">风骚律师 · 第 2 季</option><option value="bcs-4">风骚律师 · 第 4 季</option><option value="bcs-5">风骚律师 · 第 5 季</option><option value="bcs-6">风骚律师 · 第 6 季</option><option value="bb-5">绝命毒师 · 第 5 季</option></select></label>
+        <button id="quote-reset" type="button">重置筛选 ↺</button>
+        <p id="quote-count" role="status">显示 6 / 6 条台词</p>
+      </div>
+      <div class="quote-grid character-grid">
+        <article class="quote-card character-card quote-card--featured reveal" data-role="saul" data-season="bcs-4">
+          <a class="character-photo" href="https://www.amc.com/shows/better-call-saul/cast/bob-odenkirk--1032769" target="_blank" rel="noopener noreferrer" aria-label="查看索尔·古德曼的 AMC 官方角色肖像来源">
+            <img src="assets/characters/saul.jpg" alt="索尔·古德曼的 AMC 官方角色肖像" width="700" height="1000" loading="lazy">
+            <span>AMC 角色肖像 ↗</span>
+          </a>
+          <div class="character-copy">
+            <p class="quote-feature-label">THE MAN HIMSELF / 索尔本人</p>
+            <h3>索尔·古德曼<small>SAUL GOODMAN</small></h3>
+            <blockquote lang="en">“S’all good, man.”</blockquote>
+            <cite><a href="https://tvwriting.co.uk/tv_scripts/Collections/Drama/Better_Call_Saul/Better_Call_Saul_4x10_-_Winner.pdf" target="_blank" rel="noopener noreferrer">《风骚律师》S4E10 · Winner · 剧本 ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>恢复律师资格后，吉米宣布不再以麦吉尔的姓氏执业。他用这句与“Saul Goodman”谐音的轻松回应，留下金错愕的目光。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制索尔的台词">复制台词 <span aria-hidden="true">⧉</span></button>
+          </div>
+        </article>
+        <article data-role="chuck" data-season="bcs-1" class="quote-card character-card character-card--chuck reveal">
           <a class="character-photo" href="https://www.amc.com/blogs/chuck-and-howards-friendship-crumbles-in-an-instant-in-this-scene--1008865" target="_blank" rel="noopener noreferrer" aria-label="查看查克·麦吉尔的 AMC 剧照来源">
             <img src="assets/characters/chuck.jpg" alt="查克·麦吉尔与霍华德·哈姆林在剧中的对峙画面" width="1200" height="658" loading="lazy">
             <span>AMC 剧照 ↗</span>
@@ -176,9 +195,11 @@
             <h3>查克·麦吉尔<small>CHUCK MCGILL</small></h3>
             <blockquote lang="en">“You're not a real lawyer.”</blockquote>
             <cite><a href="https://www.forbes.com/sites/allenstjohn/2015/03/31/the-five-word-insult-that-changed-everything-on-better-call-saul/" target="_blank" rel="noopener noreferrer">《风骚律师》S1E9 · Pimento ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>吉米追问自己为何无法进入 HHM，查克终于说出对弟弟律师身份的否定。这句话揭开了兄弟关系中长期隐藏的裂缝。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制查克的台词">复制台词 <span aria-hidden="true">⧉</span></button>
           </div>
         </article>
-        <article class="review-card character-card reveal">
+        <article data-role="lalo" data-season="bcs-5" class="quote-card character-card reveal">
           <a class="character-photo" href="https://www.amc.com/shows/better-call-saul/cast/tony-dalton--1032763" target="_blank" rel="noopener noreferrer" aria-label="查看拉罗·萨拉曼卡的 AMC 剧照来源">
             <img src="assets/characters/lalo.jpg" alt="拉罗·萨拉曼卡站在新墨西哥州荒野的剧集肖像" width="700" height="1000" loading="lazy">
             <span>AMC 剧照 ↗</span>
@@ -187,9 +208,11 @@
             <h3>拉罗·萨拉曼卡<small>LALO SALAMANCA</small></h3>
             <blockquote lang="en">“Tell me again.”</blockquote>
             <cite><a href="https://www.netflix.com/tudum/articles/better-call-saul-best-episodes" target="_blank" rel="noopener noreferrer">《风骚律师》S5E9 · Bad Choice Road ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>拉罗来到吉米与金的公寓，反复要求吉米重讲沙漠中的遭遇。同一句话一次次出现，把谈话变成了令人窒息的审讯。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制拉罗的台词">复制台词 <span aria-hidden="true">⧉</span></button>
           </div>
         </article>
-        <article class="review-card character-card reveal">
+        <article data-role="kim" data-season="bcs-2" class="quote-card character-card reveal">
           <a class="character-photo" href="https://www.amc.com/shows/better-call-saul/cast/rhea-seehorn--1032759" target="_blank" rel="noopener noreferrer" aria-label="查看金·韦克斯勒的 AMC 剧照来源">
             <img src="assets/characters/kim.jpg" alt="金·韦克斯勒站在新墨西哥州荒野的剧集肖像" width="700" height="1000" loading="lazy">
             <span>AMC 剧照 ↗</span>
@@ -198,9 +221,11 @@
             <h3>金·韦克斯勒<small>KIM WEXLER</small></h3>
             <blockquote lang="en">“You don't save me. I save me.”</blockquote>
             <cite><a href="https://www.youtube.com/watch?v=-vWJGxAFq-Q" target="_blank" rel="noopener noreferrer">《风骚律师》S2E5 · Rebecca ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>在 HHM 的职业困境中，金拒绝让吉米替自己解决一切。这句话强调的是她的自主选择，而非对索尔业务的评价。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制金的台词">复制台词 <span aria-hidden="true">⧉</span></button>
           </div>
         </article>
-        <article class="review-card character-card reveal">
+        <article data-role="howard" data-season="bcs-6" class="quote-card character-card reveal">
           <a class="character-photo" href="https://www.amc.com/shows/better-call-saul/cast/patrick-fabian--1032761" target="_blank" rel="noopener noreferrer" aria-label="查看霍华德·哈姆林的 AMC 剧照来源">
             <img src="assets/characters/howard.jpg" alt="霍华德·哈姆林站在新墨西哥州荒野的剧集肖像" width="700" height="1000" loading="lazy">
             <span>AMC 剧照 ↗</span>
@@ -209,9 +234,11 @@
             <h3>霍华德·哈姆林<small>HOWARD HAMLIN</small></h3>
             <blockquote lang="en">“I got played, every step of the way.”</blockquote>
             <cite><a href="https://www.dailyactor.com/monologues/better-call-saul-howard-got-played/" target="_blank" rel="noopener noreferrer">《风骚律师》S6E7 · Plan and Execution ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>霍华德来到吉米与金的公寓，指出自己如何一步步被两人设计。他的愤怒与受伤，让此前的恶作剧显露出真实代价。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制霍华德的台词">复制台词 <span aria-hidden="true">⧉</span></button>
           </div>
         </article>
-        <article class="review-card character-card character-card--walter reveal">
+        <article data-role="walter" data-season="bb-5" class="quote-card character-card character-card--walter reveal">
           <a class="character-photo" href="https://www.amc.com/blogs/follow-the-rise-and-fall-of-the-white-family-in-these-breaking-bad-episodes--1008871" target="_blank" rel="noopener noreferrer" aria-label="查看沃尔特·怀特的 AMC 剧照来源">
             <img src="assets/characters/walter.jpg" alt="沃尔特·怀特与家人站在商店中的剧照" width="1200" height="707" loading="lazy">
             <span>AMC 剧照 ↗</span>
@@ -220,10 +247,14 @@
             <h3>沃尔特·怀特<small>WALTER WHITE</small></h3>
             <blockquote lang="en">“We're done when I say we're done.”</blockquote>
             <cite><a href="https://en.wikiquote.org/wiki/Breaking_Bad_(season_5)" target="_blank" rel="noopener noreferrer">《绝命毒师》S5E1 · Live Free or Die ↗</a></cite>
+            <details class="quote-context"><summary>剧情背景 <span>含剧透</span></summary><p>沃尔特向索尔施压，拒绝接受合作结束。这句话呈现的是权力与控制欲，并不是一条推荐律师的客户好评。</p></details>
+            <button class="copy-quote" type="button" aria-label="复制沃尔特的台词">复制台词 <span aria-hidden="true">⧉</span></button>
           </div>
         </article>
       </div>
-      <p class="character-disclaimer">剧照版权归 AMC / Sony Pictures Television 及相关权利方所有；台词为剧集原声短摘录，仅用于非官方课程展示。</p>
+      <p class="quote-empty" hidden>这个组合暂无台词。试试其他角色或季数，或点击“重置筛选”。</p>
+      <p class="copy-status sr-only" role="status" aria-live="polite"></p>
+      <p class="character-disclaimer">剧照与角色肖像仅作氛围配图，不代表对应台词发生的场景。版权归 AMC / Sony Pictures Television 及相关权利方；仅供粉丝趣味展示，与 AMC / Sony 无关。</p>
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
@@ -242,7 +273,7 @@
 
   <footer>
     <div class="footer-brand"><span class="brand-mark">SG</span><p><strong>SAUL GOODMAN</strong><small>ATTORNEY AT LAW</small></p></div>
-    <p class="disclaimer">本网站为《Better Call Saul》影视角色非官方粉丝致敬项目。人物剧照与短句台词来自影视作品，版权归原权利方；业务介绍与联系方式仅用于剧情氛围展示，不提供真实法律服务、法律建议或律师委托。</p>
+    <p class="disclaimer">本网站为《Better Call Saul》影视角色非官方粉丝致敬项目。人物剧照与短句台词来自影视作品，版权归原权利方；业务介绍与联系方式仅用于剧情氛围展示，不提供真实法律服务、法律建议或律师委托。仅供粉丝趣味展示，与 AMC / Sony 无关。</p>
     <div class="footer-bottom"><span>© <span id="year"></span> Better Call Saul Fan Tribute</span><a href="#top">回到顶部 ↑</a></div>
   </footer>
 
