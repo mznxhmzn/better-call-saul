@@ -92,21 +92,18 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const quoteCards = [...document.querySelectorAll('.quote-card')];
 const roleFilter = document.getElementById('quote-role');
-const seasonFilter = document.getElementById('quote-season');
 function filterQuotes() {
   let visible = 0;
   quoteCards.forEach((card) => {
-    card.hidden = !((roleFilter.value === 'all' || card.dataset.role === roleFilter.value) &&
-      (seasonFilter.value === 'all' || card.dataset.season === seasonFilter.value));
+    card.hidden = !(roleFilter.value === 'all' || card.dataset.role === roleFilter.value);
     if (!card.hidden) visible++;
   });
-  document.getElementById('quote-count').textContent = `显示 ${visible} / ${quoteCards.length} 条台词`;
+  document.getElementById('quote-count').textContent = `显示 ${visible} / ${quoteCards.length} 条角色文案`;
   document.querySelector('.quote-empty').hidden = visible !== 0;
 }
 roleFilter.addEventListener('change', filterQuotes);
-seasonFilter.addEventListener('change', filterQuotes);
 document.getElementById('quote-reset').addEventListener('click', () => {
-  roleFilter.value = seasonFilter.value = 'all';
+  roleFilter.value = 'all';
   filterQuotes();
 });
 
@@ -128,13 +125,13 @@ quoteCards.forEach((card) => {
   const button = card.querySelector('.copy-quote');
   button.addEventListener('click', async () => {
     const original = button.innerHTML;
-    const quote = card.querySelector('blockquote').textContent.trim();
+    const quote = [...card.querySelectorAll('blockquote p')].map((line) => line.textContent.trim()).join('\n');
     const speaker = card.querySelector('h3').childNodes[0].textContent.trim();
     button.disabled = true;
     try {
-      await copyText(quote);
+      await copyText(`${speaker}\n${quote}\n角色主题改写 · 非逐字原台词`);
       button.textContent = '已复制 ✓';
-      document.querySelector('.copy-status').textContent = `已复制${speaker}的台词`;
+      document.querySelector('.copy-status').textContent = `已复制${speaker}的中英双语文案`;
     } catch {
       button.textContent = '复制失败，请手动选中台词';
       document.querySelector('.copy-status').textContent = '浏览器未允许复制，请手动选中台词复制。';

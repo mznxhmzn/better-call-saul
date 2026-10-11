@@ -160,7 +160,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid #58b8d5; outline-offs
 .quote-toolbar button:hover { background: var(--yellow); color: var(--ink); }
 .quote-toolbar p { margin: 0 0 12px auto; color: #e6dfc8; font-size: 12px; }
 .quote-toolbar select:focus-visible, .quote-context summary:focus-visible { outline: 4px solid #58b8d5; outline-offset: 4px; }
-.quote-grid { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 28px; }
+.quote-grid { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 28px; }
 .quote-card { min-width: 0; display: flex; flex-direction: column; color: var(--ink); background: var(--cream); border: 3px solid #a4aa8b; box-shadow: 7px 7px 0 #080b07; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .quote-card[hidden], .quote-empty[hidden] { display: none; }
 .quote-card.reveal.visible:hover, .quote-card.reveal.visible:focus-within { transform: translateY(-6px) scale(1.015); border-color: var(--yellow); box-shadow: 8px 12px 0 #080b07; }
@@ -170,12 +170,15 @@ button:focus-visible, a:focus-visible { outline: 4px solid #58b8d5; outline-offs
 .character-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 23%; transition: transform .3s ease; }
 .character-card:hover .character-photo img { transform: scale(1.04); }
 .character-card--chuck .character-photo img { object-position: 20% center; }
+.character-card--mike .character-photo img { object-position: center 35%; }
 .character-card--walter .character-photo img { object-position: 17% center; }
 .character-photo span { position: absolute; right: 10px; bottom: 10px; padding: 8px 10px; color: #fff; background: rgba(0,0,0,.82); font: 700 11px/1.4 sans-serif; }
 .character-copy { flex: 1; display: flex; flex-direction: column; padding: 24px; }
 .character-copy h3 { margin: 0; font: 900 clamp(1.5rem, 2vw, 1.9rem)/1.2 "Arial Black", "Microsoft YaHei", sans-serif; }
 .character-copy h3 small { display: block; margin-top: 8px; color: #9b271f; font: 900 11px/1.4 "Arial Black", sans-serif; letter-spacing: .1em; }
 .character-copy blockquote { min-height: 100px; margin: 24px 0 18px; overflow-wrap: anywhere; font: 700 clamp(1.3rem, 2vw, 1.65rem)/1.45 Georgia, serif; }
+.character-copy blockquote p { margin: 0; }
+.character-copy blockquote .quote-translation { margin-top: 16px; padding-top: 16px; border-top: 1px solid #c4bea7; color: #33392d; font: 700 17px/1.8 "Microsoft YaHei", sans-serif; }
 .character-copy cite { display: block; margin-top: auto; padding-top: 14px; border-top: 2px dashed #8d8b74; color: #174f4c; font: normal 12px/1.65 sans-serif; }
 .character-copy cite a { text-decoration: underline; text-underline-offset: 3px; }
 .quote-context { margin-top: 18px; border-top: 1px solid #c4bea7; padding-top: 14px; }
