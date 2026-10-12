@@ -91,21 +91,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 
 const quoteCards = [...document.querySelectorAll('.quote-card')];
-const roleFilter = document.getElementById('quote-role');
-function filterQuotes() {
-  let visible = 0;
-  quoteCards.forEach((card) => {
-    card.hidden = !(roleFilter.value === 'all' || card.dataset.role === roleFilter.value);
-    if (!card.hidden) visible++;
-  });
-  document.getElementById('quote-count').textContent = `显示 ${visible} / ${quoteCards.length} 条角色文案`;
-  document.querySelector('.quote-empty').hidden = visible !== 0;
-}
-roleFilter.addEventListener('change', filterQuotes);
-document.getElementById('quote-reset').addEventListener('click', () => {
-  roleFilter.value = 'all';
-  filterQuotes();
-});
 
 async function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -129,7 +114,8 @@ quoteCards.forEach((card) => {
     const speaker = card.querySelector('h3').childNodes[0].textContent.trim();
     button.disabled = true;
     try {
-      await copyText(`${speaker}\n${quote}\n角色主题改写 · 非逐字原台词`);
+      const source = card.querySelector('cite').textContent.trim().replace(/\s*↗$/, '');
+      await copyText(`${speaker}\n${quote}\n${source}\n对白摘录 · 中文译文供参考`);
       button.textContent = '已复制 ✓';
       document.querySelector('.copy-status').textContent = `已复制${speaker}的中英双语文案`;
     } catch {
